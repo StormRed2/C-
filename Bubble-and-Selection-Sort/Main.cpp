@@ -24,18 +24,18 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	srand((unsigned int)t);
 
-	vector < int > list ;
+	vector < int > list;
 
 	cout << "Enter size of list " << endl;
 	cin >> listsize;
 
 	for (int i = 0; i < listsize; i++){
-		list.push_back(rand()%1000);
+		list.push_back(rand() % 1000);
 
 	}
 	for (int i = 0; i < list.size(); i++){
 		cout << list[i] << " " << endl;
-				
+
 	}
 
 	cout << "Please select sorting method:" << endl;
@@ -45,14 +45,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	if (selection == 1)
 	{
 		//bubbleSort
-		for (int i = 0; i < list.size() - 1; i++){
+
+		bool flagFinished = false;
+
+		for (int i = 0; (i < (list.size() - 1)) && (flagFinished == false); i++){
 			for (int j = 0; j < list.size() - i - 1; j++){
-				counter++;
+				flagFinished = true;
 				if (list[j + 1] < list[j])
 				{
 					temp = list[j];
 					list[j] = list[j + 1];
 					list[j + 1] = temp;
+					counter++;
+					flagFinished = false;
+					cout << "Test2" << endl;
 				}
 
 			}
@@ -65,9 +71,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		//selectionSort
 		for (int i = 0; i < list.size() - 1; i++){
 			for (int j = i; j < list.size(); j++){
-				
+
 				int temploc = i;
-				
+
 				if (list[j]<list[i])
 				{
 					temploc = j;
@@ -89,11 +95,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << list[i] << " " << endl;
 
 	}
-	cout <<"Runs: " << counter << endl;
+	cout << "Runs: " << counter << endl;
 
 	system("PAUSE");
 
 
 	return 0;
 }
-
